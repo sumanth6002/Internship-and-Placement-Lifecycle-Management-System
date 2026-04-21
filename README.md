@@ -1,4 +1,4 @@
-## DBS mini project
+## Internship and Placement Lifecycle Management Cycle
 
 This repo contains:
 
