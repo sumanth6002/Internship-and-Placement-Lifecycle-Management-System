@@ -1,4 +1,4 @@
-## Internship and Placement Lifecycle Management Cycle
+## Internship and Placement Lifecycle Management System
 
 This repo contains:
 
