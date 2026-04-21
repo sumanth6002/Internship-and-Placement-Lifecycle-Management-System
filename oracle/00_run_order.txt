@@ -1,0 +1,11 @@
+Run scripts in this order in SQL Developer / sqlplus (same schema user as JDBC):
+
+1. 01_ddl.sql
+2. 02_sample_data.sql
+3. 03_plsql.sql
+4. 04_triggers.sql
+5. 05_seed_applications.sql
+6. 06_views.sql
+7. 07_queries_lab12.sql   (optional: ad-hoc runs / report queries)
+
+Grant your app user: GRANT CONNECT, RESOURCE ... ; and ensure it owns these objects OR use synonyms.

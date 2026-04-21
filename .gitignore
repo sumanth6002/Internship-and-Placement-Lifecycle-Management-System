@@ -1,0 +1,37 @@
+# --- dependencies / builds ---
+**/node_modules/
+**/.next/
+**/out/
+**/dist/
+**/build/
+
+# --- local env / secrets ---
+**/.env
+**/.env.*
+!.env.example
+
+# --- Vercel ---
+**/.vercel/
+
+# --- logs ---
+**/*.log
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+
+# --- big binary installers / archives (keep out of git) ---
+*.cab
+*.msi
+*.exe
+*.zip
+*.7z
+*.rar
+
+# --- Oracle installer response/config files ---
+Setup.ini
+XEInstall.rsp
+
+# --- documents (optional: keep out to avoid huge repo) ---
+*.pdf
+
