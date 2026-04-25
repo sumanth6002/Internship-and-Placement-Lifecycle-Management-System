@@ -2,8 +2,16 @@ import oracledb from 'oracledb';
 
 // Auto-convert query results from arrays to objects
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
-// Force Thin mode (works in serverless environments like Vercel)
-oracledb.thin = true;
+// Prefer Thin mode (works in serverless environments like Vercel).
+// Some versions expose `thin` as read-only; avoid crashing at import time.
+try {
+  if ('thin' in oracledb) {
+    // eslint-disable-next-line no-param-reassign
+    oracledb.thin = true;
+  }
+} catch {
+  // Thin mode is the default unless Thick mode is initialized.
+}
 
 export async function getConnection() {
   try {
