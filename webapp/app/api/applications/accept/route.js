@@ -1,12 +1,15 @@
-import oracledb from 'oracledb';
 import { NextResponse } from 'next/server';
 import { getConnection } from '@/lib/db';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 export async function POST(req) {
   let connection;
   try {
     const { appId } = await req.json();
     connection = await getConnection();
+    const oracledb = (await import('oracledb')).default;
     
     const result = await connection.execute(
       `BEGIN pkg_placement.accept_offer(:a_id, :out_msg); END;`,

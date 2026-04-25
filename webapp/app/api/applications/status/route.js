@@ -1,12 +1,15 @@
 import { NextResponse } from 'next/server';
 import { getConnection } from '@/lib/db';
-import oracledb from 'oracledb';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 export async function PUT(req) {
   let connection;
   try {
     const { appId, status } = await req.json();
     connection = await getConnection();
+    const oracledb = (await import('oracledb')).default;
     
     if (status === 'ACCEPTED') {
       // Must use pkg_placement.accept_offer to adhere to DB logic correctly

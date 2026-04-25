@@ -1,6 +1,8 @@
-import oracledb from 'oracledb';
 import { NextResponse } from 'next/server';
 import { getConnection } from '@/lib/db';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
   let connection;
@@ -30,6 +32,7 @@ export async function POST(req) {
   try {
     const { studentId, openingId } = await req.json();
     connection = await getConnection();
+    const oracledb = (await import('oracledb')).default;
     
     const checkOpen = await connection.execute(`SELECT opp_type FROM opening WHERE opening_id = :id`, { id: openingId });
     if (checkOpen.rows.length > 0 && checkOpen.rows[0].OPP_TYPE === 'PLACEMENT') {
